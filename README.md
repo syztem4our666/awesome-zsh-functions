@@ -51,6 +51,18 @@ scan() {
     fi
 }
 ```
+
+**Usage:**
+```bash
+# Basic scan with default output (scan.txt)
+scan 10.10.10.10
+
+# Scan with custom output file
+scan 192.168.1.100 custom-scan.txt
+```
+
+---
+
 ```zsh
 mkt() {
     echo "📁 Creating pentesting directory structure..."
@@ -68,6 +80,14 @@ mkt() {
     echo "🎯 Ready for pentesting!"
 }
 ```
+
+**Usage:**
+```bash
+# Create directory structure in current folder
+mkt
+```
+
+---
 
 ```zsh
 myip() {
@@ -111,6 +131,14 @@ myip() {
     rm "$temp_file"
 }
 ```
+
+**Usage:**
+```bash
+# Display all IP information
+myip
+```
+
+---
 
 ```zsh
 # 🔓 Automated Hash Cracking Function
@@ -193,6 +221,20 @@ crack() {
     fi
 }
 ```
+
+**Usage:**
+```bash
+# Crack with default wordlist (rockyou.txt)
+crack hashes.txt
+
+# Crack with custom wordlist
+crack hashes.txt /usr/share/wordlists/custom.txt
+
+# Crack specific hash format
+crack md5_hashes.txt /usr/share/wordlists/rockyou.txt
+```
+
+---
 
 <div align="center">
 
