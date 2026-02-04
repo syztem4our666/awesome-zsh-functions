@@ -346,8 +346,6 @@ server filename
 ---
 
 <div align="center">
-
----
 **Made with ❤️ for the security community**
 
 ⭐ Star this repo if you find it useful!
