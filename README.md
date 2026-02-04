@@ -18,8 +18,6 @@ All functions feature:
 - 📁 **Organized output** with timestamped files
 - 🛡️ **Error handling** with helpful usage messages
 
----
-
 ## 📦 Dependencies
 
 ### Required Tools
