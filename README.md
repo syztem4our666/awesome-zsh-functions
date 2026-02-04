@@ -1,5 +1,5 @@
 # Awesome Pentesting ZSH Functions 📦
-![Screenshot](./awesome.png)
+![Screenshot](./awesome_crack.png)
 > A curated collection of powerful ZSH functions designed for penetration testers, CTF players, and security researchers who value speed and efficiency.
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
