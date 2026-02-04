@@ -343,7 +343,9 @@ server filename
 
 ### Zsh Functions
 - [ ] Web scanning
-- [ ] Active directory 
+- [ ] Active directory
+- [ ] URL Encoding & Decoding
+- [ ] Base64 Encoding & Decoding
 - [ ] + Common terminal tasks
 
 ---
