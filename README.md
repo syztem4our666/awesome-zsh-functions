@@ -338,6 +338,13 @@ server
 ```bash
 server filename
 ```
+---
+## ✅ To-Do
+
+### Zsh Functions
+- [ ] Web scanning
+- [ ] Active directory 
+- [ ] + Common terminal tasks
 
 ---
 
